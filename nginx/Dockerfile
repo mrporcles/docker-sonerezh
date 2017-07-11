@@ -13,7 +13,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 	supervisor
 
 # Install Sonerezh
-RUN git clone --branch 1.1.1 --depth 1 https://github.com/Sonerezh/sonerezh.git /usr/share/nginx/sonerezh && \
+RUN git clone --branch 1.1.3 --depth 1 https://github.com/Sonerezh/sonerezh.git /usr/share/nginx/sonerezh && \
 	chown -R www-data: /usr/share/nginx/sonerezh && \
 	chmod 775 -R /usr/share/nginx/sonerezh
 
