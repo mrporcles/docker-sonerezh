@@ -2,7 +2,7 @@
 
 This is the Git repository of the official Docker image for [Sonerezh](https://www.sonerezh.bzh). See the Hub page for more informations.
 
-**WARNING**: the Docker image for Sonerezh is still under development. Some functionnality are broken like email notifications for example..
+**WARNING**: the Docker image for Sonerezh is still under development. Some functionnality are broken like email notifications for example.
 
 # How to build this image
 
