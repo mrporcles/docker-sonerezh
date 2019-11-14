@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,13 +7,15 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 	git \
 	libav-tools \
 	nginx \
-	php5-fpm \
-	php5-gd \
-	php5-mysql \
+	php-fpm \
+	php-gd \
+	php-mysql \
+  composer \
 	supervisor
 
 # Install Sonerezh
-RUN git clone --depth 1 https://github.com/gs11/sonerezh.git /usr/share/nginx/sonerezh && \
+RUN git clone --depth 1 https://github.com/Sonerezh/sonerezh.git /usr/share/nginx/sonerezh && \
+	composer install -d /usr/share/nginx/sonerezh && \
 	chown -R www-data: /usr/share/nginx/sonerezh && \
 	chmod 775 -R /usr/share/nginx/sonerezh
 
@@ -31,6 +33,7 @@ COPY database.php /usr/share/nginx/sonerezh/app/Config/database.php
 COPY default /etc/nginx/sites-enabled/default
 COPY supervisord.conf etc/supervisor/conf.d/supervisord.conf
 COPY docker-entrypoint.sh /entrypoint.sh
+RUN mkdir /var/run/php
 
 EXPOSE 80
 
