@@ -37,7 +37,8 @@ RUN rm -f /etc/nginx/sites-enabled/default
 COPY database.php /usr/share/nginx/sonerezh/app/Config/database.php
 COPY default /etc/nginx/sites-enabled/default
 COPY supervisord.conf etc/supervisor/conf.d/supervisord.conf
-COPY docker-entrypoint.sh /entrypoint.sh
+COPY docker-entrypoint.sh /entrypoint.sh && \
+RUN mkdir /run/php
 
 EXPOSE 80
 
