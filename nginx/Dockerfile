@@ -27,7 +27,8 @@ RUN git clone --depth 1 https://github.com/Sonerezh/sonerezh.git /usr/share/ngin
 RUN mkdir /music && \
     	mkdir /usr/share/nginx/sonerezh/app/webroot/img/thumbnails && \
 	ln -s /usr/share/nginx/sonerezh/app/webroot/img/thumbnails /thumbnails && \
-	chown www-data: /music
+	chown www-data: /music && \
+	mkdir /var/run/php
 
 VOLUME /music
 VOLUME /thumbnails
@@ -38,7 +39,6 @@ COPY database.php /usr/share/nginx/sonerezh/app/Config/database.php
 COPY default /etc/nginx/sites-enabled/default
 COPY supervisord.conf etc/supervisor/conf.d/supervisord.conf
 COPY docker-entrypoint.sh /entrypoint.sh
-RUN ["mkdir", "/var/run/php"]
 
 EXPOSE 80
 
