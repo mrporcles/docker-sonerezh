@@ -27,8 +27,7 @@ RUN git clone --depth 1 https://github.com/Sonerezh/sonerezh.git /usr/share/ngin
 RUN mkdir /music && \
     	mkdir /usr/share/nginx/sonerezh/app/webroot/img/thumbnails && \
 	ln -s /usr/share/nginx/sonerezh/app/webroot/img/thumbnails /thumbnails && \
-	chown www-data: /music && \
-	mkdir /var/run/php
+	chown www-data: /music
 
 VOLUME /music
 VOLUME /thumbnails
