@@ -15,6 +15,10 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 
 # Install Sonerezh
 RUN git clone --depth 1 https://github.com/Sonerezh/sonerezh.git /usr/share/nginx/sonerezh && \
+	php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+	php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
+	php composer-setup.php && \
+	php -r "unlink('composer-setup.php');" && \
 	composer install -d /usr/share/nginx/sonerezh && \
 	chown -R www-data: /usr/share/nginx/sonerezh && \
 	chmod 775 -R /usr/share/nginx/sonerezh
