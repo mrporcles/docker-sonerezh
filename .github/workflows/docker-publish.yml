@@ -1,4 +1,4 @@
-name: Docker
+name: Docker Build
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -7,7 +7,7 @@ name: Docker
 
 on:
   schedule:
-    - cron: '15 2 * * *'
+    - cron: '55 23 * * *'
   push:
     branches: [ master ]
     # Publish semver tags as releases.
@@ -19,7 +19,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: mrporcles/sonerezh
+  IMAGE_NAME: mrporcles/sonerezh:latest
 
 
 jobs:
@@ -60,5 +60,5 @@ jobs:
           context: ./nginx
           file: ./nginx/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
