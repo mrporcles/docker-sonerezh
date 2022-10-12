@@ -5,12 +5,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 	ffmpeg \
 	git \
-	#libav-tools \
 	nginx \
 	php-fpm \
 	php-gd \
 	php-mysql \
-  composer \
+  	composer \
 	supervisor
 
 # Install Sonerezh
