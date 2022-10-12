@@ -1,6 +1,6 @@
 # Sonerezh with Docker
 
-This is the Git repository of the official Docker image for [Sonerezh](https://www.sonerezh.bzh). See the Hub page for more informations.
+This repository hosts the source code for a Docker image for [Sonerezh](https://www.sonerezh.bzh). This has been forked off the original as that image didn't seem to be manitained. See the Hub page for more information.
 
 **WARNING**: the Docker image for Sonerezh is still under development. Some functionnality are broken like email notifications for example.
 
@@ -40,10 +40,10 @@ $ docker run --name sonerezh-app --link sonerezh-db:sonerezh-db \
 
 Your Sonerezh instance is available at http://127.0.0.1:8080 :) Make sure Sonerezh have read access to `/path/to/music` and read/write access to `/path/to/thumbnails`.
 
-## Via docker-compose
-
-Coming soon
-
 # Contributing
-You are invited to contribute new features, fixes, or update, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
-Before you start to code, we recommend discussing your plans through a [GitHub issue](https://github.com/Sonerezh/sonerezh/issues), especially for more ambitious contributions.
+
+You are invited to contribute new features, fixes, or update, large or small; I am always thrilled to receive pull requests, and will do my best to process them as fast as we can.
+
+# Bugs/Problems
+
+Feel free to log an issue [here](https://github.com/mrporcles/docker-sonerezh/issues) if you experience any issues with the image.
