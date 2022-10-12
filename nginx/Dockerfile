@@ -1,11 +1,11 @@
-FROM debian:stretch
-
+FROM debian:bullseye
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install what we need
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+	ffmpeg \
 	git \
-	libav-tools \
+	#libav-tools \
 	nginx \
 	php-fpm \
 	php-gd \
@@ -15,7 +15,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 
 # Install Sonerezh
 COPY --from=composer/composer /usr/bin/composer /usr/bin/composer
-RUN composer self-update --2.2
 RUN git clone --depth 1 https://github.com/Sonerezh/sonerezh.git /usr/share/nginx/sonerezh && \
 	composer install -d /usr/share/nginx/sonerezh && \
 	chown -R www-data: /usr/share/nginx/sonerezh && \
