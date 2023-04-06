@@ -14,8 +14,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 
 # Install Sonerezh
 COPY --from=composer/composer /usr/bin/composer /usr/bin/composer
-RUN git clone --depth 1 https://github.com/mrporcles/sonerezh.git /usr/share/nginx/sonerezh && \
-	composer install -d /usr/share/nginx/sonerezh --ignore-platform-req=ext-intl && \
+RUN git clone --depth 1 https://github.com/sonerezh/sonerezh.git /usr/share/nginx/sonerezh && \
+	composer install -d /usr/share/nginx/sonerezh && \
 	chown -R www-data: /usr/share/nginx/sonerezh && \
 	chmod 775 -R /usr/share/nginx/sonerezh
 
