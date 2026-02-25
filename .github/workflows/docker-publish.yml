@@ -82,7 +82,7 @@ jobs:
       - name: Delete untagged images
         uses: actions/delete-package-versions@v5
         with:
-          package-name: 'flexget'
+          package-name: 'sonerezh'
           package-type: 'container'
           min-versions-to-keep: 0
           delete-only-untagged-versions: 'true'
