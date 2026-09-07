@@ -16,6 +16,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 COPY --from=composer/composer /usr/bin/composer /usr/bin/composer
 RUN git clone --depth 1 https://github.com/sonerezh/sonerezh.git /usr/share/nginx/sonerezh && \
 	composer install -d /usr/share/nginx/sonerezh && \
+	composer update cakephp/cakephp -d /usr/share/nginx/sonerezh --with-all-dependencies --no-blocking --ignore-platform-req=php && \
+	sed -i "s/'file' => 'sonerezh.php', 'yes' => 1, 'name' => 'Sonerezh'/'file' => 'sonerezh_mysql.php', 'yes' => 1, 'name' => 'SonerezhMysql'/" /usr/share/nginx/sonerezh/app/Controller/InstallersController.php && \
 	chown -R www-data: /usr/share/nginx/sonerezh && \
 	chmod 775 -R /usr/share/nginx/sonerezh
 
